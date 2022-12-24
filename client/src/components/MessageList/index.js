@@ -13,22 +13,22 @@ const MessageList = ({ messages }) => {
         },
     };
 
-    if (!messages) {
-        return (
-            <h3> No Messages yet be the first!</h3>
-        );
-    };
-
     return (
-        <div style={styles.messageContainer}>
-            {messages.map((message) => {
-                return (
-                    <div className="card" key={message._id} style={styles.card}>
-                        <h2 className="card-title">{message.note}</h2>
-                        <h5 className="card-subtitle">{message.name}</h5>
-                    </div>
-                )
-            })}
-        </div>
+        <>
+
+            <h2 className="text-center">Messages</h2>
+            <div style={styles.messageContainer}>
+                {messages.map((message) => {
+                    return (
+                        <div className="card" key={message._id} style={styles.card}>
+                            <h2 className="card-title">{message.note}</h2>
+                            <h5 className="card-subtitle">{message.name}</h5>
+                        </div>
+                    )
+                })}
+            </div>
+        </>
     )
 }
+
+export default MessageList
