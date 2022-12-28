@@ -24,7 +24,7 @@ const Header = () => {
                         <li className="nav-item">
                             <Link className="nav-link" to="/Schedule">Schedule of Events</Link>
                         </li>
-
+{/* note to self remove the message board might ause problems? */}
                     </ul>
                 </div>
             </header>
