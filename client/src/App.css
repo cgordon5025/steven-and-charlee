@@ -13,6 +13,14 @@
   }
 }
 
+body.modal-open .supreme-container {
+  -webkit-filter: blur(1px);
+  -moz-filter: blur(1px);
+  -o-filter: blur(1px);
+  -ms-filter: blur(1px);
+  filter: blur(10px);
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -32,6 +40,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }

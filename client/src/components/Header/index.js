@@ -5,13 +5,13 @@ import { Link } from "react-router-dom";
 const Header = () => {
     return (
         <>
-            <header className="navbar navbar-expand-lg">
+            <header className="navbar navbar-expand-lg supreme-container">
                 <Link className="navbar-brand" to="/">Home</Link>
                 <div id="navbarNav" style={{ marginLeft: "auto" }}>
                     <ul className="navbar-nav">
-                        <li className="nav-item">
+                        {/* <li className="nav-item">
                             <Link className="nav-link" to="/Messages">Message Board</Link>
-                        </li>
+                        </li> */}
                         <li className="nav-item">
                             <Link className="nav-link" to="/Registry">Registry</Link>
                         </li>
@@ -24,7 +24,7 @@ const Header = () => {
                         <li className="nav-item">
                             <Link className="nav-link" to="/Schedule">Schedule of Events</Link>
                         </li>
-{/* note to self remove the message board might ause problems? */}
+                        {/* note to self remove the message board might ause problems? */}
                     </ul>
                 </div>
             </header>

@@ -10,6 +10,7 @@ import Footer from './components/Footer';
 import Header from './components/Header';
 import Registry from './pages/Registry';
 import Travel from './pages/Travel';
+import BridalParty from './pages/BridalParty';
 // const authLink = setContext((_, { header }) => {
 //   const token = localStorage.getItem('id_token');
 //   return {
@@ -40,6 +41,7 @@ function App() {
         <Route path='/NewMessage' element={<NewMessage />} />
         <Route path='/Travel' element={<Travel />} />
         <Route path='/Registry' element={<Registry />} />
+        <Route path='/Bridalparty' element={<BridalParty />} />
       </Routes>
       <Footer />
     </ApolloProvider>
