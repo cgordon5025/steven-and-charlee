@@ -13,6 +13,7 @@
   }
 }
 
+/* We want to blur the background, incorporate a return button */
 body.modal-open .supreme-container {
   -webkit-filter: blur(1px);
   -moz-filter: blur(1px);
