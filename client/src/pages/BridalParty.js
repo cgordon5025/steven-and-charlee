@@ -75,5 +75,6 @@ function BridalParty() {
         </>
     )
 }
+// Need an option for when they click out of the modal so it doesn't prompt the wrong password part
 
 export default BridalParty
