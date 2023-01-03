@@ -1,17 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from 'react-bootstrap/Button';
 import { Link } from "react-router-dom";
+import PartyContext from "../utils/PartyContext";
+import { SAVE_PARTY } from "../utils/action";
+
 function BridalParty() {
     const [showModal, setShowModal] = useState(true)
     const [validPass, setValidPass] = useState()
     const [passInput, setPassInput] = useState('')
     const [showResp, setShowResp] = useState(false)
+    const { party, setParty } = useContext(PartyContext)
     console.log(validPass)
     const handleCorrect = () => {
+        const payload = {
+            loggedin: true
+        }
+        setParty({
+            type: SAVE_PARTY,
+            payload: payload
+        })
         setValidPass(true)
         setShowResp(false)
         setShowModal(false)
+        localStorage.setItem("PartyAuth", JSON.stringify(true))
     }
     const handleWrong = () => {
         setValidPass(false)
@@ -46,7 +58,7 @@ function BridalParty() {
                 <p> Hello</p>
                 <p> Info for the bridal party</p>
             </div>
-            {validPass ? (<></>) : (
+            {party ? (<></>) : (
                 <Modal show={showModal} onHide={handleClose}>
                     <Modal.Header>
                         Please enter the password to gain access to this page

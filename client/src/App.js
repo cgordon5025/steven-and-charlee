@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink, HttpLink } from '@apollo/client';
 import { Routes, Route } from 'react-router-dom';
-import PartyContext from './utils/partyContext';
+import PartyContext from './utils/PartyContext';
 import { useReducer } from 'react';
 import { reducer } from './utils/reducers';
 //import pages 
@@ -34,9 +34,12 @@ const client = new ApolloClient({
   link: httpLink,
   cache: new InMemoryCache()
 });
-const [party, setParty] = useReducer(reducer, initialState)
 
 function App() {
+  const initialState = JSON.parse(localStorage.getItem("PartyAuth"))
+
+  const [party, setParty] = useReducer(reducer, initialState)
+  console.log(party)
   return (
     <ApolloProvider client={client}>
       <PartyContext.Provider value={{ party, setParty }}>
