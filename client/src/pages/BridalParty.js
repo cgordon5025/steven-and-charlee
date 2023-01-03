@@ -7,6 +7,7 @@ function BridalParty() {
     const [validPass, setValidPass] = useState()
     const [passInput, setPassInput] = useState('')
     const [showResp, setShowResp] = useState(false)
+    console.log(validPass)
     const handleCorrect = () => {
         setValidPass(true)
         setShowResp(false)
@@ -18,11 +19,13 @@ function BridalParty() {
         setShowModal(true)
     }
     const handleClose = () => {
+        console.log('close active')
         console.log(passInput)
         passInput.password == "Password" ? (handleCorrect()) : (handleWrong());
     }
 
     const reroute = () => {
+        console.log('reroute active')
         setShowModal(false)
     }
     const handleChange = (event) => {
@@ -43,35 +46,38 @@ function BridalParty() {
                 <p> Hello</p>
                 <p> Info for the bridal party</p>
             </div>
+            {validPass ? (<></>) : (
+                <Modal show={showModal} onHide={handleClose}>
+                    <Modal.Header>
+                        Please enter the password to gain access to this page
+                    </Modal.Header>
+                    <Modal.Body style={{ display: "flex", flexDirection: "Column", alignItems: "center" }}>
+                        <form>
+                            <input
+                                className="form-input"
+                                placeholder="Enter the password"
+                                name="password"
+                                type="text"
+                                id="password-input"
+                                onChange={handleChange}
+                            >
+                            </input>
+                        </form>
+                        {showResp ? (
+                            <p style={{ marginTop: "3%" }}> You have entered the wrong password</p>
+                        ) : (
+                            <></>
+                        )
+                        }
+                    </Modal.Body>
+                    <Modal.Footer style={{ display: "flex", flexDirection: "column" }}>
+                        < Button style={styles.btns} onClick={handleClose}>Submit</Button>
+                        < Link onClick={reroute} to='/'> Not in the Wedding Party</Link>
+                    </Modal.Footer>
+                </Modal>
 
-            <Modal show={showModal} onHide={handleClose}>
-                <Modal.Header>
-                    Please enter the password to gain access to this page
-                </Modal.Header>
-                <Modal.Body style={{ display: "flex", flexDirection: "Column", alignItems: "center" }}>
-                    <form>
-                        <input
-                            className="form-input"
-                            placeholder="Enter the password"
-                            name="password"
-                            type="text"
-                            id="password-input"
-                            onChange={handleChange}
-                        >
-                        </input>
-                    </form>
-                    {showResp ? (
-                        <p style={{ marginTop: "3%" }}> You have entered the wrong password</p>
-                    ) : (
-                        <></>
-                    )
-                    }
-                </Modal.Body>
-                <Modal.Footer style={{ display: "flex", justifyContent: "space-evenly" }}>
-                    < Button style={styles.btns} onClick={handleClose}>Submit</Button>
-                    < Link style={styles.btns} className="btn btn-primary" onClick={reroute} to='/'> Not in the Wedding Party</Link>
-                </Modal.Footer>
-            </Modal>
+            )
+            }
         </>
     )
 }

@@ -1,0 +1,1 @@
+export const SAVE_PARTY = 'SAVE_PARTY'
