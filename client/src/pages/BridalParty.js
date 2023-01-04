@@ -6,12 +6,11 @@ import PartyContext from "../utils/PartyContext";
 import { SAVE_PARTY } from "../utils/action";
 
 function BridalParty() {
-    const [showModal, setShowModal] = useState(true)
-    const [validPass, setValidPass] = useState()
-    const [passInput, setPassInput] = useState('')
-    const [showResp, setShowResp] = useState(false)
+    const [partyModal, setPartyModal] = useState(true)
+    const [partyPass, setPartyPass] = useState()
+    const [partyInput, setPartyInput] = useState('')
+    const [partyResp, setPartyResp] = useState(false)
     const { party, setParty } = useContext(PartyContext)
-    console.log(validPass)
     const handleCorrect = () => {
         const payload = {
             loggedin: true
@@ -20,30 +19,30 @@ function BridalParty() {
             type: SAVE_PARTY,
             payload: payload
         })
-        setValidPass(true)
-        setShowResp(false)
-        setShowModal(false)
+        setPartyPass(true)
+        setPartyResp(false)
+        setPartyModal(false)
         localStorage.setItem("PartyAuth", JSON.stringify(true))
     }
     const handleWrong = () => {
-        setValidPass(false)
-        setShowResp(true)
-        setShowModal(true)
+        setPartyPass(false)
+        setPartyResp(true)
+        setPartyModal(true)
     }
     const handleClose = () => {
         console.log('close active')
-        console.log(passInput)
-        passInput.password == "Password" ? (handleCorrect()) : (handleWrong());
+        console.log(partyInput)
+        partyInput.password == "Password" ? (handleCorrect()) : (handleWrong());
     }
 
     const reroute = () => {
         console.log('reroute active')
-        setShowModal(false)
+        setPartyModal(false)
     }
     const handleChange = (event) => {
         const { name, value } = event.target
-        setPassInput({
-            ...passInput,
+        setPartyInput({
+            ...partyInput,
             [name]: value
         })
     }
@@ -59,7 +58,7 @@ function BridalParty() {
                 <p> Info for the bridal party</p>
             </div>
             {party ? (<></>) : (
-                <Modal show={showModal} onHide={handleClose}>
+                <Modal show={partyModal} onHide={handleClose}>
                     <Modal.Header>
                         Please enter the password to gain access to this page
                     </Modal.Header>
@@ -75,7 +74,7 @@ function BridalParty() {
                             >
                             </input>
                         </form>
-                        {showResp ? (
+                        {partyResp ? (
                             <p style={{ marginTop: "3%" }}> You have entered the wrong password</p>
                         ) : (
                             <></>

@@ -3,8 +3,12 @@ import './App.css';
 import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink, HttpLink } from '@apollo/client';
 import { Routes, Route } from 'react-router-dom';
 import PartyContext from './utils/PartyContext';
-import { useReducer } from 'react';
+import React, { useState, useReducer } from 'react';
 import { reducer } from './utils/reducers';
+import { SAVE_GUEST } from './utils/action';
+import Modal from 'react-bootstrap/Modal'
+import Button from 'react-bootstrap/Button';
+
 //import pages 
 import Home from './pages/Home';
 import MessagePage from './pages/MessagePage';
@@ -14,36 +18,90 @@ import Header from './components/Header';
 import Registry from './pages/Registry';
 import Travel from './pages/Travel';
 import BridalParty from './pages/BridalParty';
-// const authLink = setContext((_, { header }) => {
-//   const token = localStorage.getItem('id_token');
-//   return {
-//     headers: {
-//       ...headers,
-//       authorization: token ? `Bearer ${token}` : '',
-//     },
-//   };
-// })
 
 const httpLink = createHttpLink({
   uri: '/graphql',
 });
 
 const client = new ApolloClient({
-  // link: authLink.concat(httpLink),
-  // uri: '/graphql',
   link: httpLink,
   cache: new InMemoryCache()
 });
 
 function App() {
-  const initialState = JSON.parse(localStorage.getItem("PartyAuth"))
+  const partyState = JSON.parse(localStorage.getItem("PartyAuth"))
+  const guestState = JSON.parse(localStorage.getItem("GuestAuth"))
+  const [party, setParty] = useReducer(reducer, partyState)
+  const [guest, setGuest] = useReducer(reducer, guestState)
 
-  const [party, setParty] = useReducer(reducer, initialState)
-  console.log(party)
+  const [guestModal, setGuestModal] = useState(true);
+  const [guestPass, setGuestPass] = useState();
+  const [guestInput, setGuestInput] = useState('');
+  const [guestResp, setGuestResp] = useState(false);
+
+  const correctPass = () => {
+    const payload = {
+      invite: true
+    }
+    setGuest({
+      type: SAVE_GUEST,
+      payload: payload
+    })
+    setGuestPass(true)
+    setGuestResp(false)
+    setGuestModal(false)
+    localStorage.setItem("GuestAuth", JSON.stringify(true))
+  }
+  const incorrectPass = () => {
+    setGuestPass(false)
+    setGuestResp(true)
+    setGuestModal(true)
+  }
+  const closeGuestModal = () => {
+    guestInput.password == "Steven&Charlee" ? (correctPass()) : (incorrectPass());
+  }
+  const changeMain = (event) => {
+    const { name, value } = event.target
+    setGuestInput({
+      ...guestInput,
+      [name]: value
+    })
+  }
   return (
     <ApolloProvider client={client}>
       <PartyContext.Provider value={{ party, setParty }}>
         <Header />
+        {guest ? (
+          <></>
+        ) : (
+          <Modal show={guestModal} onHide={closeGuestModal}>
+            <Modal.Header>
+              Please enter the password to gain access to this page
+            </Modal.Header>
+            <Modal.Body style={{ display: "flex", flexDirection: "Column", alignItems: "center" }}>
+              <form>
+                <input
+                  className="form-input"
+                  placeholder="Enter the password"
+                  name="password"
+                  type="text"
+                  id="password-input"
+                  onChange={changeMain}
+                >
+                </input>
+              </form>
+              {guestResp ? (
+                <p style={{ marginTop: "3%" }}> You have entered the wrong password</p>
+              ) : (
+                <></>
+              )
+              }
+            </Modal.Body>
+            <Modal.Footer style={{ display: "flex", flexDirection: "column" }}>
+              < Button onClick={closeGuestModal}>Submit</Button>
+            </Modal.Footer>
+          </Modal>
+        )}
         <Routes>
           <Route path='/' index element={<Home />} />
           <Route path='/Messages' element={<MessagePage />} />
