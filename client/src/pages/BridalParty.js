@@ -34,7 +34,7 @@ function BridalParty() {
         console.log(partyInput)
         partyInput.password == "Password" ? (handleCorrect()) : (handleWrong());
     }
-
+    //somemore notes
     const reroute = () => {
         console.log('reroute active')
         setPartyModal(false)
