@@ -19,6 +19,19 @@ import Registry from './pages/Registry';
 import Travel from './pages/Travel';
 import BridalParty from './pages/BridalParty';
 
+const registries = [
+  {
+    store: "Target",
+    website: "Target.com",
+    imgURL: "https://corporate.target.com/_media/TargetCorp/Press/B-roll%20and%20Press%20Materials/Logos/Target_Bullseye-Logo_Red.jpg?preset=640w"
+  },
+  {
+    store: "Target",
+    website: "Target.com",
+    imgURL: "https://corporate.target.com/_media/TargetCorp/Press/B-roll%20and%20Press%20Materials/Logos/Target_Bullseye-Logo_Red.jpg?preset=640w"
+  }
+]
+
 const httpLink = createHttpLink({
   uri: '/graphql',
 });
@@ -107,7 +120,7 @@ function App() {
           <Route path='/Messages' element={<MessagePage />} />
           <Route path='/NewMessage' element={<NewMessage />} />
           <Route path='/Travel' element={<Travel />} />
-          <Route path='/Registry' element={<Registry />} />
+          <Route path='/Registry' element={<Registry registries={registries} />} />
           <Route path='/Bridalparty' element={<BridalParty />} />
         </Routes>
         <Footer />
