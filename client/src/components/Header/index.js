@@ -3,25 +3,23 @@ import { Link } from "react-router-dom";
 const Header = () => {
     return (
         <>
-            <header className="navbar navbar-expand-lg supreme-container">
-                <Link className="navbar-brand" to="/">Home</Link>
-                <div id="navbarNav" style={{ marginLeft: "auto" }}>
+            <header className="navbar navbar-expand-lg supreme-container" style={{ display: "flex", justifyContent: "center" }}>
+                <div id="navbarNav">
                     <ul className="navbar-nav">
-                        {/* <li className="nav-item">
-                            <Link className="nav-link" to="/Messages">Message Board</Link>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/">Home</Link>
                         </li>
-                        </li> */}
                         <li className="nav-item">
                             <Link className="nav-link" to="/Registry">Registry</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/Travel">Travel Information</Link>
+                            <Link className="nav-link" to="/Travel">Travel</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/Bridalparty">Bridal Party</Link>
+                            <Link className="nav-link" to="/Weddingparty">Wedding Party</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/Schedule">Schedule of Events</Link>
+                            <Link className="nav-link" to="/Schedule">Schedule</Link>
                         </li>
                     </ul>
                 </div>

@@ -7,8 +7,11 @@ import { SAVE_PARTY } from "../utils/action";
 
 function BridalParty() {
     const [partyModal, setPartyModal] = useState(true)
+    //is the password correct
     const [partyPass, setPartyPass] = useState()
+    //what did they input
     const [partyInput, setPartyInput] = useState('')
+    //give them a response based off their input, is it correct and if not display the message
     const [partyResp, setPartyResp] = useState(false)
     const { party, setParty } = useContext(PartyContext)
     const handleCorrect = () => {

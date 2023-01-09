@@ -11,8 +11,8 @@ import Button from 'react-bootstrap/Button';
 
 //import pages 
 import Home from './pages/Home';
-import MessagePage from './pages/MessagePage';
-import NewMessage from './components/NewMessage';
+// import MessagePage from './pages/MessagePage';
+// import NewMessage from './components/NewMessage';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import Registry from './pages/Registry';
@@ -83,6 +83,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <PartyContext.Provider value={{ party, setParty }}>
+        <h1 className='text-center'> Steven & Charlee</h1>
         <Header />
         {guest ? (
           <></>
@@ -117,11 +118,11 @@ function App() {
         )}
         <Routes>
           <Route path='/' index element={<Home />} />
-          <Route path='/Messages' element={<MessagePage />} />
-          <Route path='/NewMessage' element={<NewMessage />} />
+          {/* <Route path='/Messages' element={<MessagePage />} />
+          <Route path='/NewMessage' element={<NewMessage />} /> */}
           <Route path='/Travel' element={<Travel />} />
           <Route path='/Registry' element={<Registry registries={registries} />} />
-          <Route path='/Bridalparty' element={<BridalParty />} />
+          <Route path='/Weddingparty' element={<BridalParty />} />
         </Routes>
         <Footer />
       </PartyContext.Provider>
