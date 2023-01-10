@@ -1,3 +1,4 @@
 const Message = require('./Message')
+const Guest = require('./Guest')
 
-module.exports = { Message }
+module.exports = { Message, Guest }
