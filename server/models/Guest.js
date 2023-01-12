@@ -24,4 +24,4 @@ const Guest = model('Guest', GuestSchema);
 
 module.exports = Guest
 
-// us this necessary?
+// is this necessary?
