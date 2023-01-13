@@ -8,6 +8,7 @@ import { reducer } from './utils/reducers';
 import { SAVE_GUEST } from './utils/action';
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button';
+import Countdown from 'react-countdown'
 
 //import pages 
 import Home from './pages/Home';
