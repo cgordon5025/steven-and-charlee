@@ -13,7 +13,7 @@ const MessagePage = () => {
 
     const handleClose = () => setShowModal(false);
     const handleShow = () => setShowModal(true);
-    
+
     return (
         <div>
             {
@@ -35,5 +35,6 @@ const MessagePage = () => {
     )
 }
 
+// refurbish this to be a travel help page? coordinate travel?
 
 export default MessagePage
