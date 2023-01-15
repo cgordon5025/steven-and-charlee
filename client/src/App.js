@@ -8,7 +8,6 @@ import { reducer } from './utils/reducers';
 import { SAVE_GUEST } from './utils/action';
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button';
-import Countdown from 'react-countdown'
 
 //import pages 
 import Home from './pages/Home';
@@ -84,6 +83,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <PartyContext.Provider value={{ party, setParty }}>
+        <img src='./images/banner1.png' alt='steven&charlee'></img>
         <h1 className='text-center'> Steven & Charlee</h1>
         <Header />
         {guest ? (
