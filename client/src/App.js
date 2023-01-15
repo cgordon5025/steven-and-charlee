@@ -41,6 +41,16 @@ const client = new ApolloClient({
   cache: new InMemoryCache()
 });
 
+const styles = {
+  banner: {
+    display: "flex",
+    backgroundImage: `url(./images/base2.png)`,
+    backgroundSize: 'cover',
+    backgroundRepeat: "no repeat",
+    backgroundPosition: "center",
+    justifyContent: "center"
+  }
+}
 function App() {
   const partyState = JSON.parse(localStorage.getItem("PartyAuth"))
   const guestState = JSON.parse(localStorage.getItem("GuestAuth"))
@@ -83,8 +93,19 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <PartyContext.Provider value={{ party, setParty }}>
-        <img src='./images/banner1.png' alt='steven&charlee'></img>
-        <h1 className='text-center'> Steven & Charlee</h1>
+        <div className="banner">
+          <img src='./images/base.png' alt='steven&charlee'>
+          </img>
+          <h1>Steven & Charlee</h1>
+
+        </div>
+        <div className='banner'>
+          <img src='./images/base2.png' alt='steven&charlee'></img>
+          <h1> Steven & Charlee </h1>
+        </div>
+        {/* <div style={styles.banner}>
+          <h1 style={{ padding: "1vh" }}> Steven & Charlee</h1>
+        </div> */}
         <Header />
         {guest ? (
           <></>
@@ -127,7 +148,7 @@ function App() {
         </Routes>
         <Footer />
       </PartyContext.Provider>
-    </ApolloProvider>
+    </ApolloProvider >
   );
 }
 // do we want to do online RSVP for paper,paper would be easiest but might be a fun exercise

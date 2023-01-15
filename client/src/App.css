@@ -1,3 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Athiti&family=Belleza&family=Petit+Formal+Script&family=Poiret+One&family=Thasadith&display=swap');
+
+
+.banner {
+  position: relative;
+  text-align: center;
+}
+
+.banner img {
+  width: 100vw;
+  height: 50vh;
+}
+
+.banner h1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Petit Formal Script', cursive;
+  width: 90vw;
+  font-size: 8vw;
+  /* color: white; */
+}
+
 .App {
   text-align: center;
 }

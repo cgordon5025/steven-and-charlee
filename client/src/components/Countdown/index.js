@@ -55,7 +55,7 @@ const Countdown = () => {
                     </div>
                 </div>
             ) : (
-                <h2>We got married on *insert date here*</h2>
+                <h2 className="text-center">We got married on *insert date here*</h2>
             )}
         </>
     )
