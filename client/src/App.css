@@ -102,4 +102,12 @@ body.modal-open .supreme-container {
   .banner2 img {
     height: 25vh;
   }
+
+  header {
+    font-size: x-small;
+  }
+
+  #navbarSupportedContent {
+    margin-right: auto;
+  }
 }

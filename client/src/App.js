@@ -8,6 +8,7 @@ import { reducer } from './utils/reducers';
 import { SAVE_GUEST } from './utils/action';
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button';
+import { Link } from 'react-router-dom';
 
 //import pages 
 import Home from './pages/Home';
@@ -94,9 +95,11 @@ function App() {
     <ApolloProvider client={client}>
       <PartyContext.Provider value={{ party, setParty }}>
         <div className="banner">
-          <img src='./images/base.png' alt='steven&charlee'>
-          </img>
-          <h1>Steven & Charlee</h1>
+          <Link to='/'>
+            <img src='./images/base.png' alt='steven&charlee'>
+            </img>
+            <h1>Steven & Charlee</h1>
+          </Link>
         </div>
         <div className="banner2">
           <img src='./images/base.png' alt='steven&charlee'>

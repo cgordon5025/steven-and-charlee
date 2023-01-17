@@ -3,12 +3,13 @@ import { Link } from "react-router-dom";
 const Header = () => {
     return (
         <>
-            <header className="navbar navbar-expand-lg supreme-container" style={{ display: "flex", justifyContent: "center" }}>
-                <div id="navbarNav">
+            <header className="navbar navbar-expand-sm supreme-container" style={{ display: "flex", justifyContent: "center" }}>
+                {/* <Link className="navbar-brand" to="/">Home</Link> */}
+                {/* <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button> */}
+                <div className="justify-content-center" id="navbarSupportedContent">
                     <ul className="navbar-nav">
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/">Home</Link>
-                        </li>
                         <li className="nav-item">
                             <Link className="nav-link" to="/Registry">Registry</Link>
                         </li>
