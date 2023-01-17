@@ -95,3 +95,11 @@ body.modal-open .supreme-container {
     transform: rotate(360deg);
   }
 }
+
+@media(max-width:768px) {
+
+  .banner img,
+  .banner2 img {
+    height: 25vh;
+  }
+}
