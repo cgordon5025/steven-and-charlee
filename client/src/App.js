@@ -11,8 +11,8 @@ import Button from 'react-bootstrap/Button';
 
 //import pages 
 import Home from './pages/Home';
-// import MessagePage from './pages/MessagePage';
-// import NewMessage from './components/NewMessage';
+import MessagePage from './pages/MessagePage';
+import NewMessage from './components/NewMessage';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import Registry from './pages/Registry';
@@ -97,9 +97,19 @@ function App() {
           <img src='./images/base.png' alt='steven&charlee'>
           </img>
           <h1>Steven & Charlee</h1>
-
         </div>
+        <div className="banner2">
+          <img src='./images/base.png' alt='steven&charlee'>
+          </img>
+          <h1>Steven & Charlee</h1>
+        </div>
+
         <div className='banner'>
+          <img src='./images/base2.png' alt='steven&charlee'></img>
+          <h1> Steven & Charlee </h1>
+        </div>
+
+        <div className='banner2'>
           <img src='./images/base2.png' alt='steven&charlee'></img>
           <h1> Steven & Charlee </h1>
         </div>
@@ -140,8 +150,8 @@ function App() {
         )}
         <Routes>
           <Route path='/' index element={<Home />} />
-          {/* <Route path='/Messages' element={<MessagePage />} />
-          <Route path='/NewMessage' element={<NewMessage />} /> */}
+          <Route path='/Travelboard' element={<MessagePage />} />
+          <Route path='/NewTravelMSG' element={<NewMessage />} />
           <Route path='/Travel' element={<Travel />} />
           <Route path='/Registry' element={<Registry registries={registries} />} />
           <Route path='/Weddingparty' element={<BridalParty />} />

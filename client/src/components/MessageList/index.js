@@ -12,7 +12,6 @@ const MessageList = ({ messages }) => {
             flexWrap: "wrap",
         },
     };
-
     return (
         <>
 

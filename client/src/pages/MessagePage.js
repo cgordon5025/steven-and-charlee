@@ -20,10 +20,10 @@ const MessagePage = () => {
                 loading ? (
                     <div>Loading...</div>
                 ) : (
-                    messages ? (
+                    messages.length > 0 ? (
                         <MessageList messages={messages} />
                     ) : (
-                        <h3> No Messages yet be the first!</h3>
+                        <h3 className="text-center"> No Messages yet be the first!</h3>
                     )
 
                 )
