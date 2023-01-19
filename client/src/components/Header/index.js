@@ -6,8 +6,11 @@ const Header = () => {
             <header className="navbar navbar-expand-sm supreme-container" style={{ display: "flex", justifyContent: "center" }}>
                 {/* <Link className="navbar-brand" to="/">Home</Link> */}
                 {/* <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                    <span class="nav
+                    bar-toggler-icon"></span>
                 </button> */}
+
+                {/* need to reformat or do something to the collapse, don't like the style of it */}
                 <div className="justify-content-center" id="navbarSupportedContent">
                     <ul className="navbar-nav">
                         <li className="nav-item">
