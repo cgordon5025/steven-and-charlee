@@ -71,7 +71,7 @@ function BridalParty() {
                                 className="form-input"
                                 placeholder="Enter the password"
                                 name="password"
-                                type="text"
+                                type="password"
                                 id="password-input"
                                 onChange={handleChange}
                             >
