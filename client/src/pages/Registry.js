@@ -20,5 +20,5 @@ const Registry = (props) => {
         </div>
     )
 }
-
+// grr no venue for glendalough
 export default Registry
