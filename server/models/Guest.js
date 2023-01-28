@@ -11,15 +11,25 @@ const GuestSchema = new Schema(
             default: "Unconfirmed",
             required: true
         },
-        otherGuests: [
-            { type: String }
+        otherGuests: [{
+            type: Schema.Types.String,
+            ref: "Guest"
+        }
         ],
-        diet: {
+        mealOpt: {
             type: String
         }
+    },
+    {
+        toJSON: {
+            virtuals: true
+        }
     }
-)
+);
 
+GuestSchema.virtual('partyTotal').get(function () {
+    return this.otherGuests.length + 1
+})
 const Guest = model('Guest', GuestSchema);
 
 module.exports = Guest
