@@ -12,14 +12,14 @@ import { Link } from 'react-router-dom';
 
 //import pages 
 import Home from './pages/Home';
-import MessagePage from './pages/MessagePage';
-import NewMessage from './components/NewMessage';
+
 import Footer from './components/Footer';
 import Header from './components/Header';
 import Registry from './pages/Registry';
 import Travel from './pages/Travel';
 import BridalParty from './pages/BridalParty';
-
+import AllGuests from './pages/AllGuests';
+import RSVP from './pages/RSVP';
 const registries = [
   {
     store: "Target",
@@ -98,27 +98,9 @@ function App() {
           <Link to='/'>
             <img src='./images/base.png' alt='steven&charlee'>
             </img>
-            <h1>Steven & Charlee</h1>
+            <h1 style={{ color: "#53a0a5" }}>Steven & Charlee</h1>
           </Link>
         </div>
-        <div className="banner2">
-          <img src='./images/base.png' alt='steven&charlee'>
-          </img>
-          <h1>Steven & Charlee</h1>
-        </div>
-
-        <div className='banner'>
-          <img src='./images/base2.png' alt='steven&charlee'></img>
-          <h1> Steven & Charlee </h1>
-        </div>
-
-        <div className='banner2'>
-          <img src='./images/base2.png' alt='steven&charlee'></img>
-          <h1> Steven & Charlee </h1>
-        </div>
-        {/* <div style={styles.banner}>
-          <h1 style={{ padding: "1vh" }}> Steven & Charlee</h1>
-        </div> */}
         <Header />
         {guest ? (
           <></>
@@ -153,11 +135,11 @@ function App() {
         )}
         <Routes>
           <Route path='/' index element={<Home />} />
-          <Route path='/Travelboard' element={<MessagePage />} />
-          <Route path='/NewTravelMSG' element={<NewMessage />} />
           <Route path='/Travel' element={<Travel />} />
           <Route path='/Registry' element={<Registry registries={registries} />} />
           <Route path='/Weddingparty' element={<BridalParty />} />
+          <Route path='/AllGuests' element={<AllGuests />} />
+          <Route path="RSVP" element={<RSVP />} />
         </Routes>
         <Footer />
       </PartyContext.Provider>

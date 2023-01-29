@@ -12,6 +12,7 @@ type Guest{
     RSVP: String
     otherGuests:[Guest]
     mealOpt:String
+    allergyDiet:String
 }
 type Admin {
     _id:ID
@@ -25,14 +26,13 @@ type Auth {
 }
 
 type Query{
-    getMessage:[Message]
     allGuests:[Guest]
     getGuest(name:String!): Guest
 }
 
 type Mutation{
-    addMessage(name:String!, note:String!) : Message
     addGuest(name:String!,otherGuests:[String], diet:String) :Guest
+    editGuest(guestID:ID!,name:String!) : Guest
     addToParty(person1_id:ID!,person2_id:ID!) : Guest
     giveRSVP(guestID:ID!,RSVP:String!,meal:String!) :Guest
     login(username:String!,password:String!):Auth

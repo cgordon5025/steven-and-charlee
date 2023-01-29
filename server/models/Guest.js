@@ -8,8 +8,6 @@ const GuestSchema = new Schema(
         },
         RSVP: {
             type: String,
-            default: "Unconfirmed",
-            required: true
         },
         otherGuests: [{
             type: Schema.Types.String,
@@ -17,6 +15,9 @@ const GuestSchema = new Schema(
         }
         ],
         mealOpt: {
+            type: String
+        },
+        allergyDiet: {
             type: String
         }
     },

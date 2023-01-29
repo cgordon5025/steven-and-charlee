@@ -4,42 +4,58 @@ const { signToken } = require('../utils/auth');
 
 const resolvers = {
     Query: {
-        // getMessage: async () => {
-        //     return await Message.find();
-        // },
         allGuests: async () => {
             return await Guest.find().populate('otherGuests')
         },
         getGuest: async (parent, args) => {
-            return await Guest.findOne({ name: args.name })
+            return await Guest.findOne({ name: args.name }).populate('otherGuests')
         }
     },
     Mutation: {
-        addMessage: async (parent, { name, note }) => {
-            return Message.create({ name, note });
+        addGuest: async (parent, { name }) => {
+            return Guest.create({ name })
         },
-        addGuest: async (parent, { name, otherGuests, diet }) => {
-            return Guest.create({ name, otherGuests, diet })
+        editGuest: async (parent, { guestID, name }) => {
+            return Guest.findOneAndUpdate(
+                { _id: guestID },
+                { $set: { name: name } }
+            )
         },
         addToParty: async (parent, { person1_id, person2_id }) => {
-            const newMember = await Guest.findOne({ _id: person2_id })
-            console.log(newMember)
-            const member = await Guest.findOneAndUpdate(
+            const member2 = await Guest.findOne({ _id: person2_id })
+            const member1 = await Guest.findOne({ _id: person1_id })
+            console.log(member2)
+            const friend1 = await Guest.findOneAndUpdate(
                 { _id: person1_id },
                 {
                     $set: {
                         otherGuests: {
-                            _id: newMember.id,
-                            name: newMember.name,
-                            RSVP: newMember.RSVP,
-                            otherGuests: newMember.otherGuests,
-                            mealOpt: newMember.mealOpt
+                            _id: member2.id,
+                            name: member2.name,
+                            RSVP: member2.RSVP,
+                            otherGuests: member2.otherGuests,
+                            mealOpt: member2.mealOpt
                         }
                     }
                 },
                 { new: true }
             )
-            return member
+            const friend2 = await Guest.findOneAndUpdate(
+                { _id: person2_id },
+                {
+                    $set: {
+                        otherGuests: {
+                            _id: member1.id,
+                            name: member1.name,
+                            RSVP: member1.RSVP,
+                            otherGuests: member1.otherGuests,
+                            mealOpt: member1.mealOpt
+                        }
+                    }
+                },
+                { new: true }
+            )
+            return friend1, friend2
         },
         giveRSVP: async (parent, { guestID, RSVP, meal }) => {
             return Guest.findOneAndUpdate(
