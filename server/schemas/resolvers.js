@@ -24,7 +24,6 @@ const resolvers = {
         addToParty: async (parent, { person1_id, person2_id }) => {
             const member2 = await Guest.findOne({ _id: person2_id })
             const member1 = await Guest.findOne({ _id: person1_id })
-            console.log(member2)
             const friend1 = await Guest.findOneAndUpdate(
                 { _id: person1_id },
                 {
