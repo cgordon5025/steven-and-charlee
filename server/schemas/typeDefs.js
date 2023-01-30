@@ -33,7 +33,7 @@ type Query{
 type Mutation{
     addGuest(name:String!,otherGuests:[String], diet:String) :Guest
     editGuest(guestID:ID!,name:String!) : Guest
-    addToParty(person1_id:ID!,person2_id:ID!) : Guest
+    addToParty(person1Id:ID!,person2Id:ID!) : Guest
     giveRSVP(guestID:ID!,RSVP:String!,meal:String!) :Guest
     login(username:String!,password:String!):Auth
 }

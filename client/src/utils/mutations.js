@@ -2,10 +2,15 @@ import { gql } from '@apollo/client';
 
 export const ADD_TO_PARTY = gql`
 mutation AddToParty($person1Id: ID!, $person2Id: ID!) {
-  addToParty(person1_id: $person1Id, person2_id: $person2Id) {
-    _id
+  addToParty(person1Id: $person1Id, person2Id: $person2Id) {
     name
-    otherGuests
+    otherGuests {
+      name
+      mealOpt
+      allergyDiet
+      _id
+      RSVP
+    }
   }
 }
 `;

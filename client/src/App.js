@@ -52,6 +52,7 @@ const styles = {
     justifyContent: "center"
   }
 }
+
 function App() {
   const partyState = JSON.parse(localStorage.getItem("PartyAuth"))
   const guestState = JSON.parse(localStorage.getItem("GuestAuth"))

@@ -21,13 +21,13 @@ const resolvers = {
                 { $set: { name: name } }
             )
         },
-        addToParty: async (parent, { person1_id, person2_id }) => {
-            const member2 = await Guest.findOne({ _id: person2_id })
-            const member1 = await Guest.findOne({ _id: person1_id })
+        addToParty: async (parent, { person1Id, person2Id }) => {
+            const member2 = await Guest.findOne({ _id: person2Id })
+            const member1 = await Guest.findOne({ _id: person1Id })
             const friend1 = await Guest.findOneAndUpdate(
-                { _id: person1_id },
+                { _id: person1Id },
                 {
-                    $set: {
+                    $push: {
                         otherGuests: {
                             _id: member2.id,
                             name: member2.name,
@@ -40,9 +40,9 @@ const resolvers = {
                 { new: true }
             )
             const friend2 = await Guest.findOneAndUpdate(
-                { _id: person2_id },
+                { _id: person2Id },
                 {
-                    $set: {
+                    $push: {
                         otherGuests: {
                             _id: member1.id,
                             name: member1.name,
