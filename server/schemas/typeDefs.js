@@ -8,7 +8,8 @@ type Message{
 }
 type Guest{
     _id:ID
-    name: String
+    firstname: String
+    lastname:String
     RSVP: String
     otherGuests:[Guest]
     mealOpt:String
@@ -27,12 +28,12 @@ type Auth {
 
 type Query{
     allGuests:[Guest]
-    getGuest(name:String!): Guest
+    getGuest(firstname:String!, lastname:String!): Guest
 }
 
 type Mutation{
-    addGuest(name:String!,otherGuests:[String], diet:String) :Guest
-    editGuest(guestID:ID!,name:String!) : Guest
+    addGuest(firstname:String!, lastname:String!,otherGuests:[String], diet:String) :Guest
+    editGuest(guestID:ID!,firstname:String!, lastname:String!) : Guest
     addToParty(person1Id:ID!,person2Id:ID!) : Guest
     giveRSVP(guestID:ID!,RSVP:String!,meal:String!) :Guest
     login(username:String!,password:String!):Auth

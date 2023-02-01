@@ -3,9 +3,11 @@ import { gql } from '@apollo/client';
 export const ADD_TO_PARTY = gql`
 mutation AddToParty($person1Id: ID!, $person2Id: ID!) {
   addToParty(person1Id: $person1Id, person2Id: $person2Id) {
-    name
+    firstname
+    lastname
     otherGuests {
-      name
+      firstname
+      lastname
       mealOpt
       allergyDiet
       _id
@@ -21,24 +23,27 @@ mutation GiveRSVP($guestId: ID!, $rsvp: String!, $meal: String!) {
     RSVP
     _id
     mealOpt
-    name
+    firstname
+    lastname
     allergyDiet
   }
 }
 `
 
 export const EDIT_GUEST = gql`
-mutation EditGuest($guestId: ID!, $name: String!) {
-  editGuest(guestID: $guestId, name: $name) {
-    name
+mutation EditGuest($guestId: ID!, $firstname: String!, $lastname:String!) {
+  editGuest(guestID: $guestId, firstname: $firstname, lastname:$lastname) {
+    firstname
+    lastname
   }
 }
 `;
 
 export const ADD_GUEST = gql`
-mutation addGuest($name: String!) {
-  addGuest(name: $name) {
-    name
+mutation addGuest($firstname: String!, $lastname:String!) {
+  addGuest(firstname: $firstname, lastname:$lastname) {
+    firstname
+    lastname
     _id
     RSVP
     allergyDiet

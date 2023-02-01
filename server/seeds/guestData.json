@@ -1,17 +1,22 @@
 [
     {
-        "name": "Barri Margolis"
+        "firstname": "Barri",
+        "lastname": "Margolis"
     },
     {
-        "name": "Michael Margolis"
+        "firstname": "Michael",
+        "lastname": "Margolis"
     },
     {
-        "name": "Rex Margolis"
+        "firstname": "Rex",
+        "lastname": "Margolis"
     },
     {
-        "name": "Emmitt Margolis"
+        "firstname": "Emmitt",
+        "lastname": "Margolis"
     },
     {
-        "name": "Hannah Holquist"
+        "firstname": "Hannah",
+        "lastname": "Holquist"
     }
 ]

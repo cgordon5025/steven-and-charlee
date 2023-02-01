@@ -2,7 +2,11 @@ const { Schema, model } = require('mongoose');
 
 const GuestSchema = new Schema(
     {
-        name: {
+        firstname: {
+            type: String,
+            required: true
+        },
+        lastname: {
             type: String,
             required: true
         },

@@ -13,7 +13,17 @@ function GuestList({ guests, setTotalGuest }) {
     const [currentGuest, setCurrentGuest] = useState({})
     const [editName, setEditName] = useState({})
     const [newMember, setNewMember] = useState()
-
+    function SortGuests(a, b) {
+        if (a.lastname < b.lastname) {
+            return -1
+        }
+        if (a.lastname > b.lastname) {
+            return 1
+        }
+        return 0
+    }
+    const sorted_guests = guests.slice().sort(SortGuests)
+    console.log(sorted_guests)
     const handleChange = (event) => {
         const name = event.target.name
         const value = event.target.value
@@ -78,11 +88,11 @@ function GuestList({ guests, setTotalGuest }) {
     }
     return (
         <>
-            {guests.map((guest) => {
+            {sorted_guests.map((guest) => {
                 return (
                     <>
                         <tr key={guest._id}>
-                            <td>{guest.name}</td>
+                            <td>{guest.firstname} {guest.lastname}</td>
                             {guest.RSVP != null ?
                                 (<td>{guest.RSVP}</td>) :
                                 (<td>Unconfirmed</td>)}

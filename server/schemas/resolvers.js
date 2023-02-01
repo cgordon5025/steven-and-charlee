@@ -7,18 +7,18 @@ const resolvers = {
         allGuests: async () => {
             return await Guest.find().populate('otherGuests')
         },
-        getGuest: async (parent, args) => {
-            return await Guest.findOne({ name: args.name }).populate('otherGuests')
+        getGuest: async (parent, { firstname, lastname }) => {
+            return await Guest.findOne({ firstname: firstname, lastname: lastname }).populate('otherGuests')
         }
     },
     Mutation: {
-        addGuest: async (parent, { name }) => {
-            return Guest.create({ name })
+        addGuest: async (parent, { firstname, lastname }) => {
+            return Guest.create({ firstname, lastname })
         },
-        editGuest: async (parent, { guestID, name }) => {
+        editGuest: async (parent, { guestID, firstname, lastname }) => {
             return Guest.findOneAndUpdate(
                 { _id: guestID },
-                { $set: { name: name } }
+                { $set: { firstname: firstname, lastname: lastname } }
             )
         },
         addToParty: async (parent, { person1Id, person2Id }) => {
@@ -30,7 +30,8 @@ const resolvers = {
                     $push: {
                         otherGuests: {
                             _id: member2.id,
-                            name: member2.name,
+                            firstname: member2.firstname,
+                            lastname: member2.lastname,
                             RSVP: member2.RSVP,
                             otherGuests: member2.otherGuests,
                             mealOpt: member2.mealOpt
@@ -45,7 +46,8 @@ const resolvers = {
                     $push: {
                         otherGuests: {
                             _id: member1.id,
-                            name: member1.name,
+                            firstname: member1.firstname,
+                            lastname: member1.lastname,
                             RSVP: member1.RSVP,
                             otherGuests: member1.otherGuests,
                             mealOpt: member1.mealOpt

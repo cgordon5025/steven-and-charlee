@@ -1,35 +1,30 @@
 import { gql } from "@apollo/client";
 
-export const GET_MESSAGES = gql`
-query getMessage {
-    getMessage {
-      _id
-      name
-      note
-    }
-  }
-`;
-
 export const ALL_GUESTS = gql`
 query AllGuests {
-  allGuests {
+  allGuests  {
     RSVP
     _id
-    name
+    firstname
+    lastname
+    allergyDiet
     mealOpt
     otherGuests {
-      name
       _id
       mealOpt
       RSVP
+      allergyDiet
+      firstname
+      lastname
     }
+ 
   }
 }
 `;
 
 export const GET_GUEST = gql`
-query GetGuest($name: String!) {
-  getGuest(name: $name) {
+query GetGuest($firstname: String!, $lastname:String!) {
+  getGuest(firstname: $firstname, lastname: $lastname) {
     RSVP
     _id
     mealOpt

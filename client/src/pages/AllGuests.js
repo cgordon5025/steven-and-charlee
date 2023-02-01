@@ -9,18 +9,20 @@ import Modal from 'react-bootstrap/Modal'
 import GuestList from '../components/GuestList'
 
 function AllGuests() {
-    const [newGuest, setNewGuest] = useState(false)
-    const [newName, setNewName] = useState("")
+    const [newGuestModal, setNewGuestModal] = useState(false)
+    const [newName, setNewName] = useState({ firstname: "", lastname: "" })
     const [totalGuest, setTotalGuest] = useState([])
     const { loading, data } = useQuery(ALL_GUESTS)
     const [addGuest] = useMutation(ADD_GUEST)
     const guests = data?.allGuests || [];
+
     useEffect(() => {
         setTotalGuest(guests)
     }, [loading])
     const handleSubmit = async () => {
         try {
-            if (newName.name) {
+            console.log(newName)
+            if (newName.firstname && newName.lastname) {
                 const { data } = await addGuest({
                     variables: { ...newName }
                 });
@@ -33,6 +35,9 @@ function AllGuests() {
             console.log(err)
         }
     }
+    const handleAddClose = () => {
+        setNewGuestModal(false)
+    }
     const handleChange = (event => {
         const name = event.target.name
         const value = event.target.value
@@ -41,11 +46,12 @@ function AllGuests() {
             ...newName,
             [name]: value
         })
+        console.log(newName)
     })
 
     const handleClose = () => {
         setNewName("")
-        setNewGuest(false)
+        setNewGuestModal(false)
     }
 
 
@@ -58,7 +64,7 @@ function AllGuests() {
         <>
             <div style={{ display: "flex", justifyContent: "center" }}>
                 <Button onClick={() => {
-                    setNewGuest(true)
+                    setNewGuestModal(true)
                 }}> Add New Guest</Button>
             </div>
             <Table>
@@ -75,20 +81,31 @@ function AllGuests() {
                     <GuestList guests={totalGuest} setTotalGuest={setTotalGuest} />
                 </tbody>
             </Table>
-            <Modal show={newGuest}>
+            <Modal show={newGuestModal} onHide={handleAddClose}>
                 <Modal.Header style={{ "--bs-modal-header-border-color": "#140600" }} closeButton>
                     <Modal.Title className="text-center">Add A New Guest</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <form>
-                        <label for="name">Guest Name: </label>
+                        <label for="name">First Name: </label>
                         <input
                             className="form-input"
-                            placeholder="Enter Guest's Name"
-                            name="name"
+                            placeholder="Enter Guest's First Name"
+                            name="firstname"
                             type="text"
                             id="name-input"
-                            value={newName.value}
+                            value={newName.firstname}
+                            onChange={handleChange}
+                        />
+                        <br></br>
+                        <label for="name">Last Name: </label>
+                        <input
+                            className="form-input"
+                            placeholder="Enter Guest's Last Name"
+                            name="lastname"
+                            type="text"
+                            id="name-input"
+                            value={newName.lastname}
                             onChange={handleChange}
                         />
                     </form>
