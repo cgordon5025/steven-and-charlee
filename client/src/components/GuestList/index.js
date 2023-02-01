@@ -11,19 +11,14 @@ function GuestList({ guests, setTotalGuest }) {
     const [editModal, setEditModal] = useState(false)
     const [groupModal, setGroupModal] = useState(false)
     const [currentGuest, setCurrentGuest] = useState({})
-    const [editName, setEditName] = useState({})
+    const [editName, setEditName] = useState({ firstname: "", lastname: "" })
     const [newMember, setNewMember] = useState()
     function SortGuests(a, b) {
-        if (a.lastname < b.lastname) {
-            return -1
-        }
-        if (a.lastname > b.lastname) {
-            return 1
-        }
-        return 0
+        const result = a.lastname.localeCompare(b.lastname);
+
+        return result !== 0 ? result : a.firstname.localeCompare(b.firstname);
     }
     const sorted_guests = guests.slice().sort(SortGuests)
-    console.log(sorted_guests)
     const handleChange = (event) => {
         const name = event.target.name
         const value = event.target.value
@@ -31,7 +26,6 @@ function GuestList({ guests, setTotalGuest }) {
             ...editName,
             [name]: value
         })
-        console.log(value)
         console.log(editName)
     }
 
@@ -40,7 +34,8 @@ function GuestList({ guests, setTotalGuest }) {
             const { data } = await editGuest({
                 variables: {
                     guestId: editName._id,
-                    name: editName.name
+                    firstname: editName.firstname,
+                    lastname: editName.lastname
                 }
             });
             console.log({ ...editName })
@@ -57,14 +52,6 @@ function GuestList({ guests, setTotalGuest }) {
             console.log(err)
         }
     }
-    const handlePartyChange = (selectedOption) => {
-        console.log(selectedOption.target)
-        console.log(this.setState(selectedOption.target.value))
-        setNewMember({
-            memberId: selectedOption.value
-        })
-        console.log(newMember)
-    }
     const saveParty = async (event) => {
         event.preventDefault()
         console.log(newMember)
@@ -77,8 +64,7 @@ function GuestList({ guests, setTotalGuest }) {
                 person2Id: newMember
             }
         })
-        // person1_id: currentGuest._id,
-        // person2_id: newMember
+        setGroupModal(false)
     }
     const handleEditClose = () => {
         setEditModal(false)
@@ -135,13 +121,16 @@ function GuestList({ guests, setTotalGuest }) {
                     <Modal.Title className="text-center">Create A Group</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <p> Select one person to add to <span>{currentGuest.name}'s</span> party</p>
+                    <p> Select one person to add to <span>{currentGuest.firstname} {currentGuest.lastname}'s</span> party</p>
                     <form>
                         <select onChange={(choice) => setNewMember(choice.target.value)}>
-                            {guests.map(opt => {
-                                return (
-                                    <option name="newMemberId" value={opt._id}>{opt.name}</option>
-                                )
+                            {sorted_guests.map(opt => {
+                                if (opt._id !== currentGuest._id) {
+                                    return (
+                                        <option key={opt._id} name="newMemberId" value={opt._id}>{opt.firstname} {opt.lastname}</option>
+                                    )
+                                }
+
                             })}
                         </select>
                     </form>
@@ -157,8 +146,14 @@ function GuestList({ guests, setTotalGuest }) {
                 <Modal.Body>
                     <input
                         className="form-input"
-                        name="name"
-                        value={editName.name}
+                        style={{ marginRight: "5%" }}
+                        name="firstname"
+                        value={editName.firstname}
+                        onChange={handleChange} />
+                    <input
+                        className="form-input"
+                        name="lastname"
+                        value={editName.lastname}
                         onChange={handleChange} />
                 </Modal.Body>
                 <Modal.Footer style={{ display: "flex", justifyContent: "center" }}>

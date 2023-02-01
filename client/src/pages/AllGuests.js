@@ -62,6 +62,20 @@ function AllGuests() {
 
     return (
         <>
+
+
+            <p className="text-center"> Total No. of Guests: {totalGuest.length}</p>
+            <div style={{ display: "flex", justifyContent: "space-evenly" }}>
+                <p> Total Yes's: {totalGuest.filter((yes) => yes.RSVP === "yes").length}</p>
+                <p> Total No's: {totalGuest.filter((no) => no.RSVP === "no").length}</p>
+                <p> Waiting On: {totalGuest.filter((waiting) => waiting.RSVP == null).length}</p>
+            </div>
+            <div style={{ display: "flex", justifyContent: "space-evenly" }}>
+                <p> Chicken: {totalGuest.filter((chicken) => chicken.mealOpt === "chicken").length}</p>
+                <p> Steak: {totalGuest.filter((steak) => steak.mealOpt === "steak").length}</p>
+                <p> Seafood: {totalGuest.filter((seafood) => seafood.mealOpt === "seafood").length}</p>
+                <p> Undecided: {totalGuest.filter((waiting) => waiting.mealOpt == null).length}</p>
+            </div>
             <div style={{ display: "flex", justifyContent: "center" }}>
                 <Button onClick={() => {
                     setNewGuestModal(true)
@@ -87,10 +101,10 @@ function AllGuests() {
                 </Modal.Header>
                 <Modal.Body>
                     <form>
-                        <label for="name">First Name: </label>
+                        <label style={{ marginRight: "2%" }} for="name">Enter First Name: </label>
                         <input
                             className="form-input"
-                            placeholder="Enter Guest's First Name"
+                            placeholder="Guest's First Name"
                             name="firstname"
                             type="text"
                             id="name-input"
@@ -98,10 +112,11 @@ function AllGuests() {
                             onChange={handleChange}
                         />
                         <br></br>
-                        <label for="name">Last Name: </label>
+                        <br></br>
+                        <label style={{ marginRight: "2%" }} for="name">Enter Last Name: </label>
                         <input
                             className="form-input"
-                            placeholder="Enter Guest's Last Name"
+                            placeholder="Guest's Last Name"
                             name="lastname"
                             type="text"
                             id="name-input"
