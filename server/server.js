@@ -4,7 +4,6 @@ const path = require('path');
 const { typeDefs, resolvers } = require('./schemas');
 const { authMiddleware } = require('./utils/auth')
 
-const seedAll = require('./seeds/seed')
 const db = require('./config/connection');
 
 const PORT = process.env.PORT || 3001;
@@ -28,7 +27,6 @@ if (process.env.NODE_ENV === 'production') {
 const startApolloServer = async (typeDefs, resolvers) => {
     await server.start();
     server.applyMiddleware({ app });
-    await seedAll()
     await db.once('open', () => {
         app.listen(PORT, () => {
             console.log(`API Server running on port ${PORT}!`);

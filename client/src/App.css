@@ -4,15 +4,25 @@
 .banner {
   position: relative;
   text-align: center;
-
+  background-image: url(../public/images/base.png);
+  background-size: 100vw, 50vh;
+  /* background-position: 0%; */
+  width: 100vw;
+  height: 50vh;
 }
 
-.banner img {
+.test {
+  position: relative;
+  text-align: center;
+}
+
+.test img {
   object-fit: cover;
   width: 100vw;
   height: 50vh;
 }
 
+.test h1,
 .banner h1 {
   position: absolute;
   top: 50%;

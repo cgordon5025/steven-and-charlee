@@ -19,7 +19,8 @@ import Registry from './pages/Registry';
 import Travel from './pages/Travel';
 import BridalParty from './pages/BridalParty';
 import AllGuests from './pages/AllGuests';
-import RSVP from './pages/RSVP';
+import SearchRSVP from './pages/SearchRSVP';
+import RSVP from './pages/RSVP'
 const registries = [
   {
     store: "Target",
@@ -97,6 +98,14 @@ function App() {
       <PartyContext.Provider value={{ party, setParty }}>
         <div className="banner">
           <Link to='/'>
+            <h1 style={{ color: "#53a0a5" }}>Steven & Charlee</h1>
+          </Link>
+        </div>
+        <br></br>
+        <br></br>
+        <p> next banner </p>
+        <div className='test'>
+          <Link to='/'>
             <img src='./images/base.png' alt='steven&charlee'>
             </img>
             <h1 style={{ color: "#53a0a5" }}>Steven & Charlee</h1>
@@ -140,7 +149,8 @@ function App() {
           <Route path='/Registry' element={<Registry registries={registries} />} />
           <Route path='/Weddingparty' element={<BridalParty />} />
           <Route path='/AllGuests' element={<AllGuests />} />
-          <Route path="RSVP" element={<RSVP />} />
+          <Route path="/RSVP/:guestname" element={<RSVP />} />
+          <Route path="/RSVP" element={<SearchRSVP />} />
         </Routes>
         <Footer />
       </PartyContext.Provider>

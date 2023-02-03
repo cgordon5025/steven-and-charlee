@@ -3,11 +3,10 @@ import { Link } from "react-router-dom";
 const Header = () => {
     return (
         <>
-            <header className="navbar navbar-expand-sm supreme-container" style={{ display: "flex", justifyContent: "center" }}>
+            <header className="navbar navbar-expand-lg supreme-container" style={{ display: "flex", justifyContent: "center" }}>
                 <Link className="navbar-brand" to="/">Home</Link>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="nav
-                    bar-toggler-icon"></span>
+                    <span className="navsbar-toggler-icon"></span>
                 </button>
 
                 {/* need to reformat or do something to the collapse, don't like the style of it */}
