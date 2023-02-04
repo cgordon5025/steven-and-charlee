@@ -18,14 +18,13 @@ mutation AddToParty($person1Id: ID!, $person2Id: ID!) {
 `;
 
 export const GIVE_RSVP = gql`
-mutation GiveRSVP($guestId: ID!, $rsvp: String!, $meal: String!) {
-  giveRSVP(guestID: $guestId, RSVP: $rsvp, meal: $meal) {
+mutation GiveRSVP($guestId: ID!, $rsvp: String!, $mealOpt: String!, $allergyDiet: String) {
+  giveRSVP(guestId: $guestId, rsvp: $rsvp, mealOpt: $mealOpt, allergyDiet: $allergyDiet) {
     RSVP
-    _id
+    allergyDiet
+    lastname
     mealOpt
     firstname
-    lastname
-    allergyDiet
   }
 }
 `

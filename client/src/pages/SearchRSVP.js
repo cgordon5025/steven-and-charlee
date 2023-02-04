@@ -12,7 +12,6 @@ function RSVP() {
     const [searchedGuest, setSearchedGuest] = useState({ firstname: "", lastname: "" })
     const [searchResults, setSearchResults] = useState()
 
-    // const { searchGuest } = useQuery(GET_GUEST)
 
     const styles = {
         searchbar: {
@@ -34,16 +33,7 @@ function RSVP() {
         console.log(searchedGuest)
     }
     const handleSearch = async (event) => {
-        console.log("clickings")
         setSearchResults({ ...searchedGuest })
-        // const guest = useQuery(GET_GUEST, { variables: { firstname: searchResults.firstname, lastname: searchResults.lastname } })
-        // const { loading, data } = useQuery(GET_GUEST, { variables: { ...searchedGuest } })
-
-        // const { data } = await searchGuest({
-        //     variables: { ...searchedGuest }
-        // })
-        // console.log(data)
-
     }
     return (
         <>

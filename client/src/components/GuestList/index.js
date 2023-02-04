@@ -79,14 +79,14 @@ function GuestList({ guests, setTotalGuest }) {
                     <>
                         <tr key={guest._id}>
                             <td>{guest.firstname} {guest.lastname}</td>
-                            {guest.RSVP != null ?
+                            {guest.RSVP != "" ?
                                 (<td>{guest.RSVP}</td>) :
                                 (<td>Unconfirmed</td>)}
-                            {guest.mealOpt != null ?
+                            {guest.mealOpt != "" ?
                                 (<td>{guest.mealOpt}</td>) :
                                 (<td>Undecided</td>)
                             }
-                            {guest.allergyDiet != null ?
+                            {guest.allergyDiet != "" ?
                                 (<td>{guest.allergyDiet}</td>) :
                                 (<td>No accomodation needed</td>)
                             }

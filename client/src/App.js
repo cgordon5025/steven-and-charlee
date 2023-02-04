@@ -55,10 +55,12 @@ const styles = {
 }
 
 function App() {
+  const initalState = [{ _id: "", firstname: "", lastname: "", mealOpt: "", rsvp: "", allergyDiet: "", otherGuests: [] }]
   const partyState = JSON.parse(localStorage.getItem("PartyAuth"))
   const guestState = JSON.parse(localStorage.getItem("GuestAuth"))
   const [party, setParty] = useReducer(reducer, partyState)
   const [guest, setGuest] = useReducer(reducer, guestState)
+  const [RSVPParty, setRSVPParty] = useReducer(reducer, initalState)
 
   const [guestModal, setGuestModal] = useState(true);
   const [guestPass, setGuestPass] = useState();
@@ -95,19 +97,9 @@ function App() {
   }
   return (
     <ApolloProvider client={client}>
-      <PartyContext.Provider value={{ party, setParty }}>
+      <PartyContext.Provider value={{ party, setParty, RSVPParty, setRSVPParty }}>
         <div className="banner">
           <Link to='/'>
-            <h1 style={{ color: "#53a0a5" }}>Steven & Charlee</h1>
-          </Link>
-        </div>
-        <br></br>
-        <br></br>
-        <p> next banner </p>
-        <div className='test'>
-          <Link to='/'>
-            <img src='./images/base.png' alt='steven&charlee'>
-            </img>
             <h1 style={{ color: "#53a0a5" }}>Steven & Charlee</h1>
           </Link>
         </div>

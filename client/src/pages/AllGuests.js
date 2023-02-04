@@ -53,28 +53,30 @@ function AllGuests() {
         setNewName("")
         setNewGuestModal(false)
     }
-
+    // totalGuest.filter = (obj, predicate) =>
+    //     totalGuest.keys(obj)
+    //         .filter(key => predicate(obj[key]))
+    //         .reduce((res, key) => (res[key] = obj[key], res),)
 
 
     if (loading) {
         return (<div>Loading Guests...</div>)
     }
-
     return (
         <>
 
 
             <p className="text-center"> Total No. of Guests: {totalGuest.length}</p>
             <div style={{ display: "flex", justifyContent: "space-evenly" }}>
-                <p> Total Yes's: {totalGuest.filter((yes) => yes.RSVP === "yes").length}</p>
-                <p> Total No's: {totalGuest.filter((no) => no.RSVP === "no").length}</p>
-                <p> Waiting On: {totalGuest.filter((waiting) => waiting.RSVP == null).length}</p>
+                <p> Total Yes's: {totalGuest.filter((yes) => yes.RSVP === "Will Attend").length}</p>
+                <p> Total No's: {totalGuest.filter((no) => no.RSVP === "Will Not Attend").length}</p>
+                <p> Waiting On: {totalGuest.filter((waiting) => waiting.RSVP == "").length}</p>
             </div>
             <div style={{ display: "flex", justifyContent: "space-evenly" }}>
-                <p> Chicken: {totalGuest.filter((chicken) => chicken.mealOpt === "chicken").length}</p>
-                <p> Steak: {totalGuest.filter((steak) => steak.mealOpt === "steak").length}</p>
-                <p> Seafood: {totalGuest.filter((seafood) => seafood.mealOpt === "seafood").length}</p>
-                <p> Undecided: {totalGuest.filter((waiting) => waiting.mealOpt == null).length}</p>
+                <p> Chicken: {totalGuest.filter((chicken) => chicken.mealOpt === "Chicken").length}</p>
+                <p> Steak: {totalGuest.filter((steak) => steak.mealOpt === "Steak").length}</p>
+                <p> Seafood: {totalGuest.filter((seafood) => seafood.mealOpt === "Seafood").length}</p>
+                <p> Undecided: {totalGuest.filter((waiting) => waiting.mealOpt == "").length}</p>
             </div>
             <div style={{ display: "flex", justifyContent: "center" }}>
                 <Button onClick={() => {

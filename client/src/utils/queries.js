@@ -29,9 +29,11 @@ query GetGuest($firstname: String!, $lastname:String!) {
     _id
     mealOpt
     allergyDiet
-    name
+    firstname
+    lastname
     otherGuests {
-      name
+      firstname
+    lastname
       RSVP
       _id
       allergyDiet

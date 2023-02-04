@@ -4,9 +4,7 @@ import { GET_GUEST } from "../../utils/queries";
 import { GIVE_RSVP } from "../../utils/mutations";
 
 function SearchResults(searchResults) {
-    // useEffect(() => {
 
-    // }, [searchResults])
     const { loading, data } = useQuery(GET_GUEST, { variables: { firstname: searchResults.firstname, lastname: searchResults.lastname } })
     // const guest = data?.getGuest() || []
     console.log({ ...searchResults })

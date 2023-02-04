@@ -58,10 +58,10 @@ const resolvers = {
             )
             return friend1, friend2
         },
-        giveRSVP: async (parent, { guestID, RSVP, meal }) => {
+        giveRSVP: async (parent, { guestId, rsvp, mealOpt, allergyDiet }) => {
             return Guest.findOneAndUpdate(
-                { _id: guestID },
-                { $set: { RSVP: RSVP, mealOpt: meal } },
+                { _id: guestId },
+                { $set: { RSVP: rsvp, mealOpt: mealOpt, allergyDiet: allergyDiet } },
                 { new: true }
             )
         },

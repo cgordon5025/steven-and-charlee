@@ -35,7 +35,7 @@ type Mutation{
     addGuest(firstname:String!, lastname:String!,otherGuests:[String], diet:String) :Guest
     editGuest(guestID:ID!,firstname:String!, lastname:String!) : Guest
     addToParty(person1Id:ID!,person2Id:ID!) : Guest
-    giveRSVP(guestID:ID!,RSVP:String!,meal:String!) :Guest
+    giveRSVP(guestId:ID!,rsvp:String!,mealOpt:String!, allergyDiet:String) :Guest
     login(username:String!,password:String!):Auth
 }
 `;
