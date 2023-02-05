@@ -50,7 +50,7 @@ function RSVP() {
                         value={searchedGuest.lastname}
                         onChange={handleChange}
                         placeholder="Enter Last Name"></input>
-                    <Link to={`/RSVP/${searchedGuest.firstname}+${searchedGuest.lastname}/`}>
+                    <Link to={`/RSVP/${searchedGuest.firstname}/${searchedGuest.lastname}/`}>
                         <FontAwesomeIcon style={{ marginLeft: "5%" }} onClick={handleSearch} icon={faArrowAltCircleRight}></FontAwesomeIcon>
                     </Link>
 

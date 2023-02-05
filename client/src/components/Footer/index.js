@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { SocialIcon } from 'react-social-icons';
 const styles = {
     icons: {
@@ -12,11 +13,13 @@ const Footer = () => {
             <div className="container text-center">
                 <h4>
                     Made With {' '}
-                    <span
-                        className="emoji"
-                        role="img"
-                        aria-label="heart"
-                        aria-hidden="false">❤️</span> {' '}
+                    <Link style={{ textDecoration: "none" }} to="/Login">
+                        <span
+                            className="emoji"
+                            role="img"
+                            aria-label="heart"
+                            aria-hidden="false">❤️</span> {' '}
+                    </Link>
                     by Charlee
                 </h4>
             </div>

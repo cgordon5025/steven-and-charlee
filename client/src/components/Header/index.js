@@ -1,4 +1,5 @@
 import React from "react";
+import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
 const Header = () => {
     return (
@@ -27,9 +28,16 @@ const Header = () => {
                         <li className="nav-item">
                             <Link className="nav-link" to="/RSVP">RSVP</Link>
                         </li>
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/AllGuests">All Guests</Link>
-                        </li>
+                        {Auth.loggedIn() ?
+                            (
+                                <li className="nav-item">
+                                    <Link className="nav-link" to="/AllGuests">All Guests</Link>
+                                </li>
+                            ) :
+                            (
+                                <></>
+                            )}
+
                     </ul>
                 </div>
             </header>

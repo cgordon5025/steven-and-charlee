@@ -21,6 +21,8 @@ import BridalParty from './pages/BridalParty';
 import AllGuests from './pages/AllGuests';
 import SearchRSVP from './pages/SearchRSVP';
 import RSVP from './pages/RSVP'
+import Schedule from './pages/Schedule';
+import Login from './pages/Login';
 const registries = [
   {
     store: "Target",
@@ -141,8 +143,11 @@ function App() {
           <Route path='/Registry' element={<Registry registries={registries} />} />
           <Route path='/Weddingparty' element={<BridalParty />} />
           <Route path='/AllGuests' element={<AllGuests />} />
-          <Route path="/RSVP/:guestname" element={<RSVP />} />
+          {/* <Route path="/RSVP/:guestname" element={<RSVP />} /> */}
+          <Route path="/RSVP/:firstname/:lastname" element={<RSVP />} />
           <Route path="/RSVP" element={<SearchRSVP />} />
+          <Route path="Schedule" element={<Schedule />} />
+          <Route path="Login" element={<Login/>}/>
         </Routes>
         <Footer />
       </PartyContext.Provider>
